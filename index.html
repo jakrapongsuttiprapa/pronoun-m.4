@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="th" translate="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="google" content="notranslate">
+<title>PRONOUN POST · Grade 10 · By T.OAT</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📮</text></svg>">
+<style>
+:root{
+  --paper:#E6ECF2; --card:#FBFCFD; --ink:#1B2440; --muted:#56627C;
+  --red:#C62E3A; --blue:#23479E; --green:#1E7A53; --kraft:#C99A56; --line:#CBD4E0;
+  --slab:"Rockwell","Roboto Slab","Zilla Slab","Georgia",serif;
+  --sans:"Avenir Next","Segoe UI","Roboto","Noto Sans Thai","Thonburi","Leelawadee UI",sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:18px;line-height:1.55;
+  padding:env(safe-area-inset-top,0) 0 env(safe-area-inset-bottom,0);
+  background-image:linear-gradient(transparent 31px,rgba(35,71,158,.06) 32px);background-size:100% 32px}
+.wrap{max-width:780px;margin:0 auto;padding:18px 16px 60px}
+[hidden]{display:none!important}
+h1,h2,h3{font-family:var(--slab);line-height:1.2;margin:0}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.airmail{border:10px solid transparent;border-image:repeating-linear-gradient(-45deg,var(--red) 0 14px,#fff 14px 20px,var(--blue) 20px 34px,#fff 34px 40px) 10;background:var(--card)}
+.panel{background:var(--card);border:2px solid var(--ink);border-radius:6px;padding:20px}
+.btn{border:2px solid var(--ink);background:var(--ink);color:#fff;border-radius:6px;padding:12px 22px;font-weight:700;font-size:18px}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.btn.red{background:var(--red);border-color:var(--red)}
+.muted{color:var(--muted)}
+.small{font-size:14px}
+
+/* Masthead */
+.mast{padding:26px 22px;text-align:center;margin-bottom:22px}
+.mast h1{font-size:clamp(40px,9vw,64px);letter-spacing:.02em;color:var(--blue)}
+.mast .sub{font-size:18px;margin-top:4px}
+.mast .by{display:inline-block;margin-top:12px;border:2px solid var(--red);color:var(--red);padding:4px 12px;border-radius:40px;font-weight:700;transform:rotate(-2deg)}
+
+/* Registration */
+.form{display:grid;gap:14px;grid-template-columns:1fr 1fr}
+.form label{display:flex;flex-direction:column;gap:4px;font-weight:600;font-size:16px}
+.form .full{grid-column:1/-1}
+.form input,.form select{font:inherit;padding:10px 12px;border:2px solid var(--line);border-radius:6px;background:#fff;color:var(--ink)}
+.err{color:var(--red);font-weight:600;min-height:1.5em}
+
+/* Hub */
+.who{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+.routes{display:grid;gap:14px}
+.route{display:grid;grid-template-columns:86px 1fr auto;gap:16px;align-items:center;text-align:left;
+  background:var(--card);border:2px solid var(--ink);border-radius:6px;padding:14px 16px}
+.route:hover:not(:disabled){background:#fff}
+.stampn{width:86px;height:96px;border:2px dashed var(--ink);outline:5px solid var(--card);outline-offset:-9px;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;font-family:var(--slab);font-size:36px;font-weight:700;color:#fff}
+.stampn small{font-family:var(--sans);font-size:12px;font-weight:600}
+.route h3{font-size:21px}
+.route .res{font-family:var(--slab);font-size:22px;font-weight:700;white-space:nowrap}
+.route.done{background:#F1F4F7}
+.total{margin-top:18px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.sync{font-size:14px;padding:3px 10px;border-radius:30px;border:1.5px solid currentColor}
+.sync.on{color:var(--green)} .sync.off{color:var(--muted)}
+
+/* Play */
+.bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px;font-weight:600}
+.bar .grow{flex:1}
+.prog{height:8px;background:var(--line);border-radius:8px;overflow:hidden;margin-bottom:16px}
+.prog i{display:block;height:100%;background:var(--blue);transition:width .3s}
+.pill{padding:3px 10px;border-radius:30px;background:var(--card);border:1.5px solid var(--ink);font-size:15px}
+.pill.warn{border-color:var(--red);color:var(--red)}
+.card{padding:22px 22px 26px;position:relative}
+.qtype{font-size:15px;font-weight:700;color:var(--muted);margin-bottom:10px}
+.sent{font-size:clamp(21px,4.4vw,26px);line-height:1.6;margin:0 0 18px}
+.sent b{color:var(--blue)}
+.blank{display:inline-block;min-width:90px;border-bottom:3px solid var(--ink);margin:0 4px;text-align:center}
+.opts{display:grid;gap:10px}
+.opt{text-align:left;padding:13px 16px;border:2px solid var(--line);background:#fff;border-radius:6px;font-size:19px}
+.opt:hover:not(:disabled){border-color:var(--ink)}
+.opt:disabled{cursor:default}
+.right{border-color:var(--green)!important;background:#E3F3EA!important;color:#0E4A31}
+.wrong{border-color:var(--red)!important;background:#FBE5E7!important;color:#7A1520}
+.toks{display:flex;flex-wrap:wrap;gap:8px;font-size:clamp(20px,4.2vw,24px)}
+.tok{border:2px solid transparent;background:transparent;border-radius:6px;padding:4px 8px;border-bottom:2px dashed var(--line)}
+.tok:hover:not(:disabled){border-color:var(--ink)}
+.tok:disabled{cursor:default}
+.zone{min-height:62px;border:2px dashed var(--muted);border-radius:8px;padding:8px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;background:#F6F8FB}
+.zone.hot{border-color:var(--blue);background:#E8EEFA}
+.slot{display:inline-flex;min-width:120px;min-height:48px;vertical-align:middle;border:2px dashed var(--muted);border-radius:8px;
+  margin:0 4px;padding:3px;align-items:center;justify-content:center;background:#F6F8FB}
+.slot.hot{border-color:var(--blue);background:#E8EEFA}
+.tray.zone{border:none;background:transparent;padding:0}
+.line{background:#fff}
+.tray{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px;min-height:56px}
+.chip{touch-action:none;user-select:none;-webkit-user-select:none;border:2px solid var(--ink);background:#fff;border-radius:6px;
+  padding:9px 14px;font-size:20px;font-weight:600;box-shadow:3px 3px 0 var(--kraft)}
+.chip.dragging{opacity:.3}
+.drag-ghost{position:fixed;pointer-events:none;z-index:99;transform:translate(-50%,-60%) rotate(-3deg);box-shadow:5px 6px 0 var(--kraft)}
+.hint{font-size:14px;color:var(--muted);margin-top:8px}
+.actions{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
+.fb{margin-top:18px;padding:16px;border-radius:6px;border:2px solid var(--ink);background:#fff;display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start}
+.pm{width:92px;height:92px;border-radius:50%;border:4px double currentColor;display:flex;align-items:center;justify-content:center;text-align:center;
+  font-family:var(--slab);font-weight:700;font-size:11px;line-height:1.15;padding:6px;transform:rotate(-12deg);animation:stamp .35s ease-out}
+.pm.ok{color:var(--green)} .pm.no{color:var(--red)}
+@keyframes stamp{from{transform:scale(1.8) rotate(-12deg);opacity:0}to{transform:scale(1) rotate(-12deg);opacity:1}}
+@media (prefers-reduced-motion:reduce){.pm{animation:none}.prog i{transition:none}}
+.fb .ans{font-weight:700}
+.fb .next{grid-column:1/-1;justify-self:end}
+
+/* rule sheet */
+.rule{padding:22px}
+.rule .ex{background:#F1F4F9;border-left:5px solid var(--blue);padding:10px 14px;margin:12px 0;border-radius:0 6px 6px 0}
+.rule ul{margin:8px 0;padding-left:22px}
+
+/* results */
+.big{font-family:var(--slab);font-size:64px;font-weight:700;color:var(--blue);line-height:1}
+.bars{display:grid;gap:10px;margin:18px 0}
+.brow{display:grid;grid-template-columns:150px 1fr 60px;gap:10px;align-items:center;font-size:16px}
+.btrack{height:14px;background:var(--line);border-radius:8px;overflow:hidden}
+.btrack i{display:block;height:100%}
+.review{margin-top:14px;display:grid;gap:8px}
+.review div{background:#fff;border:1.5px solid var(--line);border-radius:6px;padding:10px 12px;font-size:16px}
+
+/* toast */
+#toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:12px 18px;border-radius:8px;
+  z-index:200;max-width:90vw;font-weight:600;box-shadow:0 6px 20px rgba(0,0,0,.25)}
+#toast.red{background:var(--red)}
+
+/* admin */
+.admin .wrap{max-width:1200px}
+.tools{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:14px 0}
+.tools input,.tools select{font:inherit;font-size:16px;padding:8px 10px;border:2px solid var(--line);border-radius:6px;background:#fff}
+.tablewrap{overflow-x:auto;background:var(--card);border:2px solid var(--ink);border-radius:6px}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap}
+th{background:var(--ink);color:#fff;position:sticky;top:0}
+td.n{text-align:center;font-variant-numeric:tabular-nums}
+tr.flash td{animation:fl 1.2s}
+@keyframes fl{from{background:#FFE9A8}to{background:transparent}}
+.vio{color:var(--red);font-weight:700}
+.cell{border:1.5px solid var(--line);background:#fff;border-radius:5px;padding:2px 10px;font-weight:700;min-width:40px}
+.cell:hover{border-color:var(--red);color:var(--red)}
+.mini{padding:4px 10px;font-size:14px;border:1.5px solid var(--red);color:var(--red);background:#fff;border-radius:5px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.stat{background:var(--card);border:2px solid var(--ink);border-radius:6px;padding:10px 14px}
+.stat b{font-family:var(--slab);font-size:26px;display:block}
+.stat{font-size:15px;line-height:1.35}
+#adNote:empty{display:none}
+@media (max-width:560px){
+  .form{grid-template-columns:1fr}
+  .route{grid-template-columns:64px 1fr;} .route .res{grid-column:2;font-size:17px}
+  .stampn{width:64px;height:72px;font-size:28px}
+  .brow{grid-template-columns:96px 1fr 50px}
+  .fb{grid-template-columns:1fr}.pm{width:76px;height:76px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- ============ REGISTRATION ============ -->
+<section id="reg" class="screen">
+  <header class="mast airmail">
+    <h1>PRONOUN POST</h1>
+    <div class="sub">Subject &amp; Object Pronouns · Direct &amp; Indirect Objects · to &amp; for</div>
+    <div class="muted small" style="margin-top:6px">สำหรับ grade 10 · 5 ด่าน · 100 ข้อ</div>
+    <div class="by">By T.OAT</div>
+  </header>
+  <div class="panel">
+    <h2 style="font-size:24px;margin-bottom:6px">ลงทะเบียนผู้ส่งพัสดุ</h2>
+    <p class="muted small" style="margin-top:0">กรอกข้อมูลให้ถูกต้อง ครูจะใช้ข้อมูลนี้บันทึกคะแนน แต่ละด่านทำได้ 1 ครั้ง</p>
+    <div class="form">
+      <label>ชื่อ<input id="fFirst" autocomplete="off" autocorrect="off" spellcheck="false" maxlength="40"></label>
+      <label>นามสกุล<input id="fLast" autocomplete="off" autocorrect="off" spellcheck="false" maxlength="40"></label>
+      <label>ชั้น<select id="fGrade"><option>ม.4</option><option>ม.5</option><option>ม.6</option></select></label>
+      <label>ห้อง<select id="fRoom"><option>1</option><option>2</option><option>3</option><option>4</option></select></label>
+      <label class="full">เลขที่<input id="fNo" type="number" inputmode="numeric" min="1" max="50"></label>
+    </div>
+    <p class="err" id="regErr"></p>
+    <button class="btn" id="regBtn">เข้าสู่ที่ทำการไปรษณีย์</button>
+  </div>
+  <p style="text-align:center;margin-top:18px"><a href="?admin=1" class="muted small" id="teacherLink">สำหรับครู: เข้าหน้าผู้ดูแล (Admin)</a></p>
+</section>
+
+<!-- ============ HUB ============ -->
+<section id="hub" class="screen" hidden>
+  <header class="mast airmail" style="padding:16px">
+    <h1 style="font-size:clamp(32px,7vw,44px)">PRONOUN POST</h1>
+    <div class="muted small">สำหรับ grade 10 · By T.OAT</div>
+  </header>
+  <div class="who">
+    <div><b id="hubName"></b><br><span class="muted small" id="hubClass"></span></div>
+    <span class="sync off" id="syncPill">● บันทึกในเครื่อง</span>
+  </div>
+  <p class="muted" style="margin-top:0">เลือกด่านได้ตามลำดับที่ต้องการ แต่ละด่าน 20 ข้อ มีทั้งเลือกตอบ ลากวางคำ แตะคำในประโยค และเรียงประโยค</p>
+  <div class="routes" id="routes"></div>
+  <div class="total panel">
+    <div><span class="muted">คะแนนรวม</span><br><span class="big" style="font-size:40px" id="hubTotal">0</span> <span class="muted">/ 100</span></div>
+    <button class="btn" id="toFinal" hidden>ดูใบสรุปผล</button>
+  </div>
+  <p style="text-align:center;margin-top:20px"><button class="btn ghost small" id="notMe">ไม่ใช่ฉัน / เปลี่ยนผู้ใช้</button></p>
+</section>
+
+<!-- ============ RULE SHEET ============ -->
+<section id="rule" class="screen" hidden>
+  <div class="airmail rule">
+    <div class="muted small" id="ruleTag"></div>
+    <h2 id="ruleTitle" style="font-size:30px;margin:4px 0 10px"></h2>
+    <div id="ruleBody"></div>
+    <div class="actions">
+      <button class="btn" id="ruleGo">เริ่มด่าน</button>
+      <button class="btn ghost" id="ruleBack">กลับ</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PLAY ============ -->
+<section id="play" class="screen" hidden>
+  <div class="bar">
+    <span id="pStage"></span><span class="grow"></span>
+    <span class="pill" id="pNum"></span>
+    <span class="pill" id="pScore"></span>
+    <span class="pill warn" id="pVio" hidden></span>
+  </div>
+  <div class="prog"><i id="pBar"></i></div>
+  <div class="card airmail" id="qcard">
+    <div class="qtype" id="qType"></div>
+    <div id="qBody"></div>
+    <div id="fb"></div>
+  </div>
+</section>
+
+<!-- ============ STAGE END ============ -->
+<section id="stageEnd" class="screen" hidden>
+  <div class="panel">
+    <div class="muted" id="seTitle"></div>
+    <div style="display:flex;align-items:baseline;gap:10px;margin:8px 0"><span class="big" id="seScore"></span><span class="muted">/ 20</span></div>
+    <p id="seMsg" style="font-weight:600"></p>
+    <h3 style="font-size:20px;margin-top:14px">ข้อที่ตอบผิด</h3>
+    <div class="review" id="seReview"></div>
+    <div class="actions"><button class="btn" id="seBack">กลับไปเลือกด่าน</button></div>
+  </div>
+</section>
+
+<!-- ============ FINAL ============ -->
+<section id="final" class="screen" hidden>
+  <div class="airmail" style="padding:24px">
+    <div class="muted">ใบสรุปผล PRONOUN POST · สำหรับ grade 10 · By T.OAT</div>
+    <h2 id="fName" style="font-size:26px;margin:6px 0"></h2>
+    <div class="muted" id="fClass"></div>
+    <div style="display:flex;align-items:baseline;gap:10px;margin:14px 0"><span class="big" id="fTotal"></span><span class="muted">/ 100</span></div>
+    <div class="bars" id="fBars"></div>
+    <p class="small muted" id="fSync"></p>
+    <div class="actions"><button class="btn ghost" id="fBack">กลับไปหน้าด่าน</button></div>
+  </div>
+</section>
+
+<!-- ============ ADMIN GATE ============ -->
+<section id="gate" class="screen" hidden>
+  <div class="panel" style="max-width:420px;margin:40px auto">
+    <h2 style="font-size:26px">หน้าครู · PRONOUN POST</h2>
+    <p class="muted small">ใส่รหัส PIN เพื่อดูคะแนนแบบสด</p>
+    <div class="form" style="grid-template-columns:1fr"><label>PIN<input id="pinIn" type="password" inputmode="numeric" autocomplete="off"></label></div>
+    <p class="err" id="pinErr"></p>
+    <button class="btn" id="pinBtn">เข้าสู่หน้าครู</button>
+    <p class="small" style="margin-top:14px"><a href="./" class="muted">กลับหน้านักเรียน</a></p>
+  </div>
+</section>
+
+<!-- ============ ADMIN ============ -->
+<section id="admin" class="screen" hidden>
+  <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
+    <div><h2 style="font-size:28px">หน้าครู · PRONOUN POST</h2><div class="muted small">สำหรับ grade 10 · By T.OAT · อัปเดตทุก 2 วินาที</div></div>
+    <span><span class="sync" id="adSync">●</span> <button class="btn ghost small" id="adOut" style="padding:6px 12px;font-size:14px">ออกจากหน้าครู</button></span>
+  </div>
+  <p class="err" id="adNote"></p>
+  <p class="muted small" style="margin:0 0 8px">แตะตัวเลขคะแนนในช่องด่าน เพื่อให้นักเรียนคนนั้นทำด่านนั้นใหม่ · ปุ่ม "รีเซ็ตทั้งหมด" ลบข้อมูลทุกด่าน</p>
+  <div class="stats" id="adStats"></div>
+  <div class="tools">
+    <input id="adSearch" placeholder="ค้นหาชื่อ / เลขที่">
+    <select id="adGrade"><option value="">ทุกชั้น</option><option>ม.4</option><option>ม.5</option><option>ม.6</option></select>
+    <select id="adRoom"><option value="">ทุกห้อง</option><option>1</option><option>2</option><option>3</option><option>4</option></select>
+    <select id="adSort"><option value="class">เรียงตามชั้น/เลขที่</option><option value="score">เรียงตามคะแนน</option><option value="time">ล่าสุดก่อน</option></select>
+    <button class="btn ghost small" id="adCsv">ดาวน์โหลด CSV</button>
+    <button class="btn ghost small" id="adCopy">คัดลอกลิงก์นักเรียน</button>
+  </div>
+  <div class="tablewrap"><table>
+    <thead><tr><th>ชั้น</th><th>เลขที่</th><th>ชื่อ-นามสกุล</th><th>ด่าน1</th><th>ด่าน2</th><th>ด่าน3</th><th>ด่าน4</th><th>ด่าน5</th><th>รวม</th><th>สถานะล่าสุด</th><th>สลับแท็บ</th><th>อัปเดต</th><th></th></tr></thead>
+    <tbody id="adBody"></tbody>
+  </table></div>
+  <details style="margin-top:18px" class="panel">
+    <summary style="cursor:pointer;font-weight:700">เปลี่ยน PIN</summary>
+    <div class="tools"><input id="newPin" type="password" inputmode="numeric" placeholder="PIN ใหม่ (4-8 หลัก)"><button class="btn small" id="setPin">บันทึก PIN</button></div>
+  </details>
+</section>
+
+</div>
+<div id="toast" hidden></div>
+
+<script>
+/* =====================================================================
+   PRONOUN POST · สำหรับ grade 10 · By T.OAT
+   ตั้งค่า: วาง URL ของ Google Apps Script Web App ใน GAS_URL
+   (เว้นว่างไว้ = โหมดออฟไลน์ บันทึกคะแนนในเครื่องเท่านั้น)
+   หน้าครู: เปิด index.html?admin=1   PIN เริ่มต้น 7846
+===================================================================== */
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbwy7iR0gtZ0qxVeQKIawM_1Utr9ZQ__OgpveHvZpSLyF00c8aeIn8sTWWdESXtySJJp-w/exec';
+const DEFAULT_PIN = '7846';
+const LS_KEY = 'pronounPost_g10_v1';
+
+/* ---------------- ข้อสอบ 5 ด่าน × 20 ข้อ ---------------- */
+const P_SUBJ='แตะที่ Subject Pronoun ในประโยค', P_OBJ='แตะที่ Object Pronoun ในประโยค', P_BAD='แตะที่คำที่ใช้ผิด',
+      P_DO='แตะที่ Direct Object (สิ่งของ)', P_IO='แตะที่ Indirect Object (ผู้รับ)';
+const STAGES=[
+{n:1,title:'Subject Pronouns',tag:'ใครเป็นผู้ทำ?',color:'#23479E',
+ rule:`<p><b>Subject pronoun</b> คือสรรพนามที่ทำหน้าที่ <b>ประธาน</b> อยู่ <b>หน้ากริยา</b> บอกว่า "ใครเป็นผู้ทำ"</p>
+ <div class="ex">I · you · he · she · it · we · they</div>
+ <ul><li>ผู้ชาย 1 คน → he / ผู้หญิง 1 คน → she / สิ่งของ-สัตว์ 1 อย่าง → it</li>
+ <li>หลายคน/หลายสิ่ง → they / "... and I" → we / "you and ..." → you</li>
+ <li>ระวัง: her, our, its คือ "ของ..." ไม่ใช่ประธาน</li></ul>
+ <div class="ex"><b>Nida</b> is kind. → <b>She</b> helps everyone.</div>`,
+ items:[
+ {t:'mc',q:'My sister and I love music. ___ go to concerts every month.',o:['We','Us','They','She'],a:'We',ex:'"My sister and I" = ผู้พูดรวมกับอีกคน → We ส่วน Us เป็นรูปกรรม ใช้เป็นประธานไม่ได้'},
+ {t:'mc',q:'Look at that dog! ___ is so cute.',o:['It','He','They','Its'],a:'It',ex:'สัตว์ 1 ตัวที่ไม่ระบุเพศ → It ส่วน Its แปลว่า "ของมัน" ไม่ใช่ประธาน'},
+ {t:'mc',q:'Mr. Somchai is our new teacher. ___ teaches biology.',o:['He','Him','His','They'],a:'He',ex:'Mr. Somchai = ผู้ชาย 1 คน อยู่หน้ากริยา teaches → He'},
+ {t:'mc',q:'Nida and Ploy are best friends. ___ always sit together.',o:['They','Them','She','We'],a:'They',ex:'Nida and Ploy = 2 คน (ไม่รวมผู้พูด) → They ส่วน Them เป็นรูปกรรม'},
+ {t:'mc',q:'You and Tom are late again! ___ need to hurry.',o:['You','They','We','Your'],a:'You',ex:'"You and Tom" มีผู้ฟังรวมอยู่ด้วย → You (พหูพจน์)'},
+ {t:'fill',q:'Ms. Anna lives near the school, so ___ walks to work.',o:['she','her','they','it'],a:'she',ex:'Ms. Anna = ผู้หญิง 1 คน เป็นผู้ทำกริยา walks → she'},
+ {t:'fill',q:'The students are tired because ___ studied all night.',o:['they','them','he','we'],a:'they',ex:'The students = หลายคน อยู่หน้ากริยา studied → they'},
+ {t:'fill',q:'My brother and I play football. ___ practise every evening.',o:['We','Us','They','I'],a:'We',ex:'"My brother and I" = We ทำหน้าที่ประธานของ practise'},
+ {t:'fill',q:'The computers in our lab are old. ___ often crash.',o:['They','Them','It','We'],a:'They',ex:'The computers = สิ่งของหลายชิ้น → They'},
+ {t:'fill',q:'I think ___ am ready for the test.',o:['I','me','my','we'],a:'I',ex:'กริยา am ใช้คู่กับ I เท่านั้น และตำแหน่งนี้ต้องเป็นประธาน'},
+ {t:'click',p:P_SUBJ,w:['Yesterday','we','visited','our','grandmother','in','Chiang Mai.'],a:1,ex:'we เป็นผู้ทำกริยา visited ส่วน our แปลว่า "ของเรา"'},
+ {t:'click',p:P_SUBJ,w:['After','school,','she','helps','her','mother','at','the','shop.'],a:2,ex:'she เป็นผู้ทำกริยา helps ส่วน her ในที่นี้แปลว่า "ของเธอ" (her mother)'},
+ {t:'click',p:P_SUBJ,w:['Can','you','help','me','with','this','homework?'],a:1,ex:'ในประโยคคำถาม ประธานอยู่หลัง Can → you ส่วน me เป็นกรรม'},
+ {t:'click',p:P_SUBJ,w:['The','kittens','were','hungry,','so','they','cried','loudly.'],a:5,ex:'they (แทน The kittens) เป็นผู้ทำกริยา cried'},
+ {t:'click',p:P_SUBJ,w:['Every','morning,','he','drives','us','to','school.'],a:2,ex:'he เป็นผู้ขับ (drives) → ประธาน ส่วน us เป็นกรรม'},
+ {t:'order',w:['She','is','my','best','friend.'],ex:'She (ประธาน) + is + my best friend.'},
+ {t:'order',w:['They','play','badminton','after','school.'],ex:'They + play + badminton + after school (เวลาไว้ท้าย)'},
+ {t:'order',w:['We','are','in','Grade','10.'],ex:'We คู่กับ verb to be "are"'},
+ {t:'order',w:['He','reads','the','news','every','morning.'],ex:'He + reads (เติม s เพราะประธานเอกพจน์บุรุษที่ 3)'},
+ {t:'order',w:['It','rains','a','lot','in','August.'],ex:'ใช้ It เป็นประธานเมื่อพูดถึงสภาพอากาศ'}
+]},
+{n:2,title:'Object Pronouns',tag:'ใครถูกกระทำ?',color:'#1E7A53',
+ rule:`<p><b>Object pronoun</b> คือสรรพนามที่ทำหน้าที่ <b>กรรม</b> อยู่ <b>หลังกริยา</b> หรือ <b>หลังคำบุพบท</b> (to, with, for, at, between ...)</p>
+ <div class="ex">me · you · him · her · it · us · them</div>
+ <ul><li>I → me, he → him, she → her, we → us, they → them</li>
+ <li>you และ it ใช้รูปเดิมทั้งประธานและกรรม</li>
+ <li>หลังบุพบทต้องเป็นรูปกรรมเสมอ: with <b>me</b>, to <b>them</b>, between you and <b>me</b></li></ul>
+ <div class="ex">I like <b>Peter</b>. → I like <b>him</b>.</div>`,
+ items:[
+ {t:'mc',q:'I called Mali yesterday and told ___ about the party.',o:['her','she','hers','him'],a:'her',ex:'Mali = ผู้หญิง อยู่หลังกริยา told → รูปกรรม her'},
+ {t:'mc',q:"These shoes are too small. I can't wear ___.",o:['them','they','it','their'],a:'them',ex:'shoes เป็นพหูพจน์ อยู่หลังกริยา wear → them'},
+ {t:'mc',q:"Please give the ball back to ___. It's mine!",o:['me','I','my','mine'],a:'me',ex:'หลังคำบุพบท to ต้องใช้รูปกรรม → me'},
+ {t:'mc',q:'Our teacher gave ___ a lot of homework.',o:['us','we','our','ours'],a:'us',ex:'อยู่หลังกริยา gave (เป็นผู้รับ) → รูปกรรม us'},
+ {t:'mc',q:'Peter is very kind. Everyone likes ___.',o:['him','he','his','them'],a:'him',ex:'Peter = ผู้ชาย 1 คน อยู่หลังกริยา likes → him'},
+ {t:'fill',q:"Where is my bag? I can't find ___.",o:['it','its','them','she'],a:'it',ex:'my bag = สิ่งของ 1 ชิ้น อยู่หลัง find → it'},
+ {t:'fill',q:'My grandparents live far away, so I visit ___ once a year.',o:['them','they','their','us'],a:'them',ex:'grandparents = หลายคน อยู่หลัง visit → them'},
+ {t:'fill',q:'Jane, can I talk to ___ for a minute?',o:['you','your','yours','she'],a:'you',ex:'หลังบุพบท to และพูดกับ Jane โดยตรง → you'},
+ {t:'fill',q:"Between you and ___, I don't like this song.",o:['me','I','my','mine'],a:'me',ex:'between เป็นคำบุพบท → between you and me (ไม่ใช่ you and I)'},
+ {t:'fill',q:'Tom and I are going to the cinema. Do you want to come with ___?',o:['us','we','our','them'],a:'us',ex:'Tom and I = we แต่อยู่หลังบุพบท with จึงต้องเป็นรูปกรรม us'},
+ {t:'click',p:P_OBJ,w:['She','always','helps','us','with','our','homework.'],a:3,ex:'us อยู่หลังกริยา helps → กรรม ส่วน our แปลว่า "ของเรา"'},
+ {t:'click',p:P_OBJ,w:['I','saw','them','at','the','mall','last','night.'],a:2,ex:'them อยู่หลังกริยา saw → กรรม'},
+ {t:'click',p:P_OBJ,w:['My','mother','bought','him','a','new','bike.'],a:3,ex:'him อยู่หลังกริยา bought → กรรม (ผู้รับ)'},
+ {t:'click',p:P_OBJ,w:["Don't",'worry.','I','will','call','you','later.'],a:5,ex:'you อยู่หลังกริยา call → กรรม ส่วน I เป็นประธาน'},
+ {t:'click',p:P_OBJ,w:['The','teacher','asked','her','a','difficult','question.'],a:3,ex:'her อยู่หลังกริยา asked → กรรม (ผู้ถูกถาม)'},
+ {t:'order',w:['I','love','them','very','much.'],ex:'I + love + them (กรรม) + very much'},
+ {t:'order',w:['Please','help','me','with','this.'],ex:'ประโยคขอร้อง: Please + help + me'},
+ {t:'order',w:['She','invited','us','to','her','party.'],ex:'She + invited + us (กรรม) + to her party'},
+ {t:'order',w:['We','met','him','at','the','station.'],ex:'We + met + him (กรรม) + สถานที่'},
+ {t:'order',w:['Mom','cooked','it','for','dinner.'],ex:'Mom + cooked + it (กรรม) + for dinner'}
+]},
+{n:3,title:'Subject vs Object',tag:'เลือกให้ถูกตำแหน่ง',color:'#8A4FB0',
+ rule:`<p>ดู <b>ตำแหน่ง</b> ก่อนเลือกคำ</p>
+ <ul><li><b>หน้ากริยา</b> → รูปประธาน (I, he, she, we, they)</li>
+ <li><b>หลังกริยา / หลังบุพบท</b> → รูปกรรม (me, him, her, us, them)</li></ul>
+ <p><b>เทคนิคตัดคำ:</b> ถ้ามี "... and ___" ให้ลองตัดอีกคนออก</p>
+ <div class="ex">The teacher saw Kan and ___. → ตัด Kan and → saw <b>me</b> ✔ (saw I ✘)</div>
+ <div class="ex">My friends and ___ went home. → ตัดออก → <b>I</b> went home ✔</div>`,
+ items:[
+ {t:'mc',q:'The teacher wants to see Kan and ___ after class.',o:['me','I','my','myself'],a:'me',ex:'ลองตัด "Kan and" ออก → wants to see me (ไม่ใช่ see I) เพราะอยู่หลังกริยา'},
+ {t:'mc',q:'My friends and ___ are going camping this weekend.',o:['I','me','my','mine'],a:'I',ex:'ตัด "My friends and" ออก → I am going → ต้องใช้รูปประธาน I'},
+ {t:'mc',q:'เปลี่ยนคำนามเป็นสรรพนาม: **Mr. Lee teaches Nok and Ben.**',o:['He teaches them.','Him teaches they.','He teaches they.','Him teaches them.'],a:'He teaches them.',ex:'Mr. Lee (ประธาน) → He / Nok and Ben (กรรม) → them'},
+ {t:'mc',q:'เปลี่ยนคำนามเป็นสรรพนาม: **The dog followed Suda home.**',o:['It followed her home.','It followed she home.','Its followed her home.','It followed hers home.'],a:'It followed her home.',ex:'The dog (ประธาน) → It / Suda (กรรม) → her'},
+ {t:'mc',q:'เปลี่ยนคำนามเป็นสรรพนาม: **Nat and Joy gave the old man some food.**',o:['They gave him some food.','Them gave him some food.','They gave he some food.','Them gave he some food.'],a:'They gave him some food.',ex:'Nat and Joy (ประธาน) → They / the old man (ผู้รับ อยู่หลังกริยา) → him'},
+ {t:'fill',q:'My brother and ___ watched a movie last night.',o:['I','me','us','my'],a:'I',ex:'ตัด "My brother and" ออก → I watched → รูปประธาน'},
+ {t:'fill',q:'The coach told Lek and ___ to run faster.',o:['me','I','we','my'],a:'me',ex:'ตัด "Lek and" ออก → told me → รูปกรรม'},
+ {t:'fill',q:'Ploy lost her keys. Her dad helped ___ find them.',o:['her','she','hers','him'],a:'her',ex:'Ploy อยู่หลังกริยา helped → รูปกรรม her'},
+ {t:'fill',q:'Are ___ coming to the party tonight, guys?',o:['you','your','them','us'],a:'you',ex:'ในคำถาม ประธานอยู่หลัง Are และพูดกับ guys โดยตรง → you'},
+ {t:'fill',q:'Somchai and Anan are twins. Can you tell ___ apart?',o:['them','they','their','him'],a:'them',ex:'Somchai and Anan = 2 คน อยู่หลังกริยา tell → them'},
+ {t:'click',p:P_BAD,w:['Him','is','my','cousin','from','Bangkok.'],a:0,ex:'หน้ากริยา is ต้องเป็นประธาน → He is my cousin ...'},
+ {t:'click',p:P_BAD,w:['Our','teacher','gave','we','a','quiz','today.'],a:3,ex:'หลังกริยา gave ต้องเป็นรูปกรรม → gave us a quiz'},
+ {t:'click',p:P_BAD,w:['Mina','called','I','last','night.'],a:2,ex:'หลังกริยา called ต้องเป็นรูปกรรม → called me'},
+ {t:'click',p:P_BAD,w:['Them','are','my','new','classmates.'],a:0,ex:'หน้ากริยา are ต้องเป็นประธาน → They are ...'},
+ {t:'click',p:P_BAD,w:['Please','tell','she','the','answer.'],a:2,ex:'หลังกริยา tell ต้องเป็นรูปกรรม → tell her the answer'},
+ {t:'order',w:['They','called','me','yesterday.'],ex:'They (ประธาน) + called + me (กรรม)'},
+ {t:'order',w:['She','likes','him','a','lot.'],ex:'She (ประธาน) + likes + him (กรรม)'},
+ {t:'order',w:['We','will','meet','them','tomorrow.'],ex:'We (ประธาน) + will meet + them (กรรม)'},
+ {t:'order',w:['He','helped','us','with','the','project.'],ex:'He (ประธาน) + helped + us (กรรม)'},
+ {t:'order',w:['I',"don't",'know','her','very','well.'],ex:"I (ประธาน) + don't know + her (กรรม)"}
+]},
+{n:4,title:'Direct & Indirect Objects',tag:'พัสดุ กับ ผู้รับ',color:'#B7792A',
+ rule:`<p>กริยาบางตัว (give, send, buy, show, tell, make ...) มี <b>กรรม 2 ตัว</b></p>
+ <ul><li><b>Direct Object (กรรมตรง)</b> = สิ่งของที่ถูกกระทำ → ถาม "อะไร?"</li>
+ <li><b>Indirect Object (กรรมรอง)</b> = ผู้รับ → ถาม "ให้ใคร?"</li></ul>
+ <div class="ex"><b>S + V + IO + DO</b><br>Dad gave <b>me</b> (IO) <b>a watch</b> (DO).</div>
+ <p>เมื่อผู้รับอยู่ <b>หน้า</b> สิ่งของ <b>ห้ามใส่ to / for</b> และถ้าเป็นสรรพนามต้องใช้รูปกรรม (me, us, him ...)</p>`,
+ items:[
+ {t:'mc',q:'**My father bought me a watch.** Direct Object (สิ่งที่ถูกซื้อ) คือข้อใด?',o:['a watch','me','My father','bought'],a:'a watch',ex:'ถาม "ซื้ออะไร?" → a watch = Direct Object ส่วน me = ผู้รับ (Indirect Object)'},
+ {t:'mc',q:'**She sent her friend a postcard.** Indirect Object (ผู้รับ) คือข้อใด?',o:['her friend','a postcard','She','sent'],a:'her friend',ex:'ถาม "ส่งให้ใคร?" → her friend = Indirect Object'},
+ {t:'mc',q:'ประโยคใดถูกต้อง?',o:['He gave me a gift.','He gave a gift me.','He gave I a gift.','Me gave he a gift.'],a:'He gave me a gift.',ex:'S + V + IO + DO → He gave me (ผู้รับ, รูปกรรม) a gift (สิ่งของ)'},
+ {t:'mc',q:'**The teacher showed the class a video.** คำว่า "the class" ทำหน้าที่อะไร?',o:['Indirect object','Direct object','Subject','Verb'],a:'Indirect object',ex:'the class คือผู้ที่ได้ดูวิดีโอ (ผู้รับ) → Indirect object ส่วน a video = Direct object'},
+ {t:'mc',q:'ประโยคใดมีทั้ง Direct Object และ Indirect Object?',o:['Mom cooked us dinner.','Mom cooked dinner.','Mom is cooking.','Mom cooks every day.'],a:'Mom cooked us dinner.',ex:'us = ผู้รับ (IO) และ dinner = สิ่งที่ทำ (DO) ครบทั้ง 2 ตัว'},
+ {t:'fill',q:'Can you lend ___ your pen?',o:['me','I','my','mine'],a:'me',ex:'ผู้รับอยู่หลังกริยา lend → รูปกรรม me (IO) + your pen (DO)'},
+ {t:'fill',q:'The waiter brought ___ the menu.',o:['us','we','our','ours'],a:'us',ex:'ผู้รับอยู่หลังกริยา brought → us (IO) + the menu (DO)'},
+ {t:'fill',q:'Grandma told the children ___.',o:['a story','to them','for them','they'],a:'a story',ex:'the children = ผู้รับ (IO) แล้วตามด้วยสิ่งที่เล่า a story (DO)'},
+ {t:'fill',q:'Nok made ___ a birthday cake.',o:['her sister','to her sister','for her sister','she'],a:'her sister',ex:'เมื่อผู้รับอยู่หน้าสิ่งของ ห้ามมี for → made her sister a birthday cake'},
+ {t:'fill',q:'Our coach gave ___ some good advice.',o:['the team','to the team','for the team','they'],a:'the team',ex:'ผู้รับอยู่หน้าสิ่งของ ห้ามมี to → gave the team some good advice'},
+ {t:'click',p:P_DO,w:['Dad','gave','my brother','a new phone.'],a:3,ex:'ให้อะไร? → a new phone = Direct Object'},
+ {t:'click',p:P_IO,w:['The nurse','handed','the patient','a glass of water.'],a:2,ex:'ส่งให้ใคร? → the patient = Indirect Object'},
+ {t:'click',p:P_DO,w:['Ann','showed','us','her new dress.'],a:3,ex:'ให้ดูอะไร? → her new dress = Direct Object ส่วน us = ผู้รับ'},
+ {t:'click',p:P_IO,w:['Our teacher','asked','Beam','a hard question.'],a:2,ex:'ถามใคร? → Beam = Indirect Object ส่วน a hard question = Direct Object'},
+ {t:'click',p:P_IO,w:['I','will buy','my mom','some flowers.'],a:2,ex:'ซื้อให้ใคร? → my mom = Indirect Object'},
+ {t:'order',w:['My','aunt','gave','me','a','new','bag.'],ex:'S + V + IO + DO → My aunt gave me a new bag.'},
+ {t:'order',w:['He','sent','us','a','postcard','from','Japan.'],ex:'S + V + IO (us) + DO (a postcard)'},
+ {t:'order',w:['The','teacher','showed','them','a','video.'],ex:'S + V + IO (them) + DO (a video)'},
+ {t:'order',w:['Please','bring','me','a','glass','of','water.'],ex:'Please + bring + me (IO) + a glass of water (DO)'},
+ {t:'order',w:['She','told','her','son','a','bedtime','story.'],ex:'S + V + IO (her son) + DO (a bedtime story)'}
+]},
+{n:5,title:'to & for',tag:'ส่งถึง หรือ ทำให้',color:'#C62E3A',
+ rule:`<p>ย้ายผู้รับไปไว้ <b>ท้ายประโยค</b> ต้องมี <b>to</b> หรือ <b>for</b> นำหน้า</p>
+ <div class="ex"><b>S + V + DO + to/for + IO</b><br>She gave <b>me</b> a book. → She gave a book <b>to me</b>.</div>
+ <ul><li><b>to</b> = สิ่งของเคลื่อนไปถึงผู้รับ: give, send, lend, show, tell, pass, teach, write, sell, bring, hand, <b>explain</b></li>
+ <li><b>for</b> = ทำ/หามาเพื่อผู้รับ: buy, make, cook, bake, get, find, build, book</li></ul>
+ <p class="small muted">explain ต้องใช้ to เสมอ: explain the rule <b>to</b> me (ห้ามพูด explain me)</p>`,
+ items:[
+ {t:'mc',q:'I lent my notebook ___ Nat.',o:['to','for','at','with'],a:'to',ex:'lend (ให้ยืม) สิ่งของเคลื่อนไปหาผู้รับ → to'},
+ {t:'mc',q:'Dad cooked dinner ___ us.',o:['for','to','at','on'],a:'for',ex:'cook = ทำให้ใครบางคน → for'},
+ {t:'mc',q:'เปลี่ยนรูปประโยค: **She sent me an email.**',o:['She sent an email to me.','She sent an email for me.','She sent to me an email.','She sent me to an email.'],a:'She sent an email to me.',ex:'send → to และโครงสร้างคือ S + V + DO + to + IO'},
+ {t:'mc',q:'เปลี่ยนรูปประโยค: **Mom bought my sister a dress.**',o:['Mom bought a dress for my sister.','Mom bought a dress to my sister.','Mom bought for my sister a dress.','Mom bought my sister for a dress.'],a:'Mom bought a dress for my sister.',ex:'buy → for และโครงสร้างคือ S + V + DO + for + IO'},
+ {t:'mc',q:'กริยาใดใช้ "for" เมื่อย้ายผู้รับไปไว้ท้ายประโยค?',o:['bake','give','send','show'],a:'bake',ex:'bake (อบให้) เป็นการทำเพื่อผู้รับ → for ส่วน give/send/show ใช้ to'},
+ {t:'fill',q:'He showed his photos ___ everyone.',o:['to','for','at','with'],a:'to',ex:'show → to (ให้ผู้รับดู)'},
+ {t:'fill',q:'Can you get a drink ___ me?',o:['for','to','at','of'],a:'for',ex:'get (ไปหามาให้) → for'},
+ {t:'fill',q:'Our teacher explained the lesson ___ us again.',o:['to','for','at','with'],a:'to',ex:'explain ใช้ to เสมอ และห้ามพูดว่า explain us the lesson'},
+ {t:'fill',q:'I made a card ___ my best friend.',o:['for','to','at','with'],a:'for',ex:'make (ทำให้) → for'},
+ {t:'fill',q:'Please pass the ball ___ Joe.',o:['to','for','at','on'],a:'to',ex:'pass (ส่งต่อ) สิ่งของเคลื่อนไปหาผู้รับ → to'},
+ {t:'click',p:P_IO,w:['She','gave','a flower','to','her mother.'],a:4,ex:'ให้ใคร? → her mother = Indirect Object (อยู่หลัง to)'},
+ {t:'click',p:P_IO,w:['Grandpa','built','a treehouse','for','us.'],a:4,ex:'สร้างให้ใคร? → us = Indirect Object (อยู่หลัง for)'},
+ {t:'click',p:'แตะที่ Direct Object (สิ่งที่ถูกสอน)',w:['Mr. Tan','teaches','English','to','young children.'],a:2,ex:'สอนอะไร? → English = Direct Object ส่วน young children = ผู้รับ'},
+ {t:'click',p:P_BAD,w:['I','wrote','a letter','to','she.'],a:4,ex:'หลังบุพบท to ต้องเป็นรูปกรรม → to her'},
+ {t:'click',p:P_BAD,w:['Grandma','baked','a cake','to','me.'],a:3,ex:'bake ต้องใช้ for → baked a cake for me'},
+ {t:'order',w:['She','gave','a','present','to','me.'],ex:'S + V + DO (a present) + to + IO (me)'},
+ {t:'order',w:['We','bought','some','snacks','for','them.'],ex:'buy → for: We bought some snacks for them.'},
+ {t:'order',w:['He','showed','his','new','phone','to','us.'],ex:'show → to: He showed his new phone to us.'},
+ {t:'order',w:['Mom','made','a','sandwich','for','me.'],ex:'make → for: Mom made a sandwich for me.'},
+ {t:'order',w:['Please','send','this','email','to','him.'],ex:'send → to: Please send this email to him.'}
+]}
+];
+const TYPE_LABEL={mc:'เลือกคำตอบที่ถูกต้อง',fill:'ลากหรือแตะคำไปวางในช่องว่าง',order:'ลากหรือแตะคำเพื่อเรียงเป็นประโยค'};
+
+/* ---------------- utilities ---------------- */
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fmt=s=>esc(s).replace(/\*\*(.+?)\*\*/g,'<b>$1</b>');
+function hash(str){let h=1779033703^str.length;for(let i=0;i<str.length;i++){h=Math.imul(h^str.charCodeAt(i),3432918353);h=h<<13|h>>>19}return h>>>0}
+function rng(seed){return function(){seed|=0;seed=seed+0x6D2B79F5|0;let t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+function shuffle(arr,r){const a=arr.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(r()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function show(id){document.querySelectorAll('.screen').forEach(s=>s.hidden=(s.id!==id));window.scrollTo(0,0)}
+let toastT;function toast(msg,red){const t=$('#toast');t.textContent=msg;t.className=red?'red':'';t.hidden=false;clearTimeout(toastT);toastT=setTimeout(()=>t.hidden=true,2600)}
+const norm=s=>String(s).trim().replace(/\s+/g,' ');
+
+/* ---------------- sound ---------------- */
+let AC=null;
+function beep(ok){try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();if(AC.state==='suspended')AC.resume();const now=AC.currentTime;
+  (ok?[523,784]:[220,165]).forEach((f,i)=>{const o=AC.createOscillator(),g=AC.createGain();o.type=ok?'triangle':'sawtooth';o.frequency.value=f;
+  g.gain.setValueAtTime(.0001,now+i*.11);g.gain.exponentialRampToValueAtTime(.18,now+i*.11+.02);g.gain.exponentialRampToValueAtTime(.0001,now+i*.11+.2);
+  o.connect(g).connect(AC.destination);o.start(now+i*.11);o.stop(now+i*.11+.22)})}catch(e){}}
+
+/* ---------------- state ---------------- */
+let S=null;
+function load(){try{return JSON.parse(localStorage.getItem(LS_KEY))}catch(e){return null}}
+function save(){try{localStorage.setItem(LS_KEY,JSON.stringify(S))}catch(e){}}
+function totalScore(){return Object.values(S.done).reduce((a,b)=>a+(+b||0),0)}
+
+/* ---------------- backend ---------------- */
+async function api(action,data){
+  if(!GAS_URL) return {ok:false,offline:true};
+  try{const r=await fetch(GAS_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(Object.assign({action},data||{}))});
+    return await r.json()}catch(e){return {ok:false,error:String(e)}}
+}
+let lastOnline=false;
+function setSync(on){lastOnline=!!on;const p=$('#syncPill');if(!p)return;p.className='sync '+(on?'on':'off');p.textContent=on?'● เชื่อมต่อระบบครูแล้ว':(GAS_URL?'● ออฟไลน์ (จะส่งเมื่อเชื่อมต่อได้)':'● บันทึกในเครื่อง')}
+let flushing=false;
+async function flush(){
+  if(!S||!GAS_URL||flushing) return !S||!S.outbox.length;
+  flushing=true;
+  try{while(S.outbox.length){const r=await api(S.outbox[0].action,S.outbox[0]);if(!r.ok){setSync(false);return false}S.outbox.shift();save()}setSync(true);return true}
+  finally{flushing=false}
+}
+async function syncRegister(readOnly){
+  if(!GAS_URL||!S) return;
+  const okFlush=await flush(); if(!okFlush) return;
+  const r=await api(readOnly?'status':'register',{key:S.key,info:S.info});
+  if(readOnly&&r.ok&&r.missing) return syncRegister(false);
+  if(!r.ok){setSync(false);return}
+  setSync(true);
+  const srv={};for(let n=1;n<=5;n++){const v=r.done&&r.done[n];if(v!==''&&v!=null&&!isNaN(+v))srv[n]=+v}
+  // server is the authority (supports teacher reset); keep the in-progress stage if any
+  S.done=srv; if(S.cur&&srv[S.cur.stage]!=null){S.cur=null;if(!$('#play').hidden){save();renderHub();show('hub')}}
+  S.viol=Math.max(S.viol,+r.viol||0); save();
+  if(!$('#hub').hidden) renderHub();
+}
+setInterval(()=>{if(S&&S.outbox&&S.outbox.length)flush()},10000);
+// หน้าเลือกด่าน: เช็กกับระบบครูทุก 20 วินาที (ครูรีเซ็ตด่าน → ปลดล็อกทันทีโดยไม่ต้องรีเฟรช)
+setInterval(()=>{if(S&&!S.cur&&!$('#hub').hidden)syncRegister(true)},20000);
+
+/* ---------------- registration ---------------- */
+function register(){
+  const first=norm($('#fFirst').value),last=norm($('#fLast').value),grade=$('#fGrade').value,room=$('#fRoom').value,no=parseInt($('#fNo').value,10);
+  const err=$('#regErr');
+  if(first.length<2) return err.textContent='กรุณากรอกชื่อ';
+  if(last.length<2) return err.textContent='กรุณากรอกนามสกุล';
+  if(!(no>=1&&no<=50)) return err.textContent='เลขที่ต้องอยู่ระหว่าง 1–50';
+  err.textContent='';
+  const info={first,last,grade,room,no};
+  const key=[grade,room,no,(first+last).toLowerCase().replace(/\s/g,'')].join('|');
+  S={v:1,info,key,done:{},wrong:{},viol:0,cur:null,outbox:[]};save();
+  $('#regBtn').disabled=true;
+  syncRegister().finally(()=>{$('#regBtn').disabled=false});
+  renderHub();show('hub');
+}
+
+/* ---------------- hub ---------------- */
+function renderHub(){
+  $('#hubName').textContent=S.info.first+' '+S.info.last;
+  $('#hubClass').textContent=`ชั้น ${S.info.grade}/${S.info.room} เลขที่ ${S.info.no}`;
+  $('#routes').innerHTML=STAGES.map(st=>{
+    const d=S.done[st.n],inProg=S.cur&&S.cur.stage===st.n;
+    const res=d!=null?`${d}/20`:inProg?`ข้อ ${S.cur.i+1}/20`:'ยังไม่ทำ';
+    return `<button class="route${d!=null?' done':''}" data-n="${st.n}" ${d!=null?'aria-disabled="true"':''}>
+      <span class="stampn" style="background:${st.color}">${st.n}<small>ด่าน</small></span>
+      <span><h3>${st.title}</h3><span class="muted">${st.tag}</span></span>
+      <span class="res" style="color:${d!=null?st.color:'var(--muted)'}">${d!=null?'✔ ':''}${res}</span></button>`}).join('');
+  document.querySelectorAll('.route').forEach(b=>b.onclick=()=>openStage(+b.dataset.n));
+  $('#hubTotal').textContent=totalScore();
+  $('#toFinal').hidden=Object.keys(S.done).length<5;
+  setSync(GAS_URL&&lastOnline&&!S.outbox.length);
+}
+function openStage(n){
+  if(S.done[n]!=null) return toast(`ด่าน ${n} ส่งคะแนนแล้ว (${S.done[n]}/20) ทำซ้ำไม่ได้`);
+  if(S.cur&&S.cur.stage!==n) return toast(`กรุณาทำด่าน ${S.cur.stage} ให้จบก่อน`,true);
+  if(S.cur&&S.cur.stage===n){show('play');renderQ();return}
+  const st=STAGES[n-1];
+  $('#ruleTag').textContent=`ด่าน ${n} · ${st.tag}`;$('#ruleTitle').textContent=st.title;$('#ruleBody').innerHTML=st.rule;
+  $('#ruleGo').onclick=()=>startStage(n);show('rule');
+}
+function startStage(n){
+  const idx=[...Array(20).keys()];
+  S.cur={stage:n,order:shuffle(idx,rng(hash(S.key+'|stage'+n))),i:0,score:0,res:[]};save();
+  api('progress',{key:S.key,live:`เริ่มด่าน ${n}`});
+  show('play');renderQ();
+}
+
+/* ---------------- play ---------------- */
+let answered=false,readyAt=0;
+const notReady=()=>Date.now()<readyAt;
+function curItem(){const c=S.cur;return STAGES[c.stage-1].items[c.order[c.i]]}
+function itemRng(){return rng(hash(S.key+'|'+S.cur.stage+'|'+S.cur.order[S.cur.i]))}
+function correctText(it){return it.t==='click'?it.w[it.a]:it.t==='order'?it.w.join(' '):it.a}
+
+function renderQ(){
+  const c=S.cur;
+  while(c.res[c.i]!==undefined&&c.i<20)c.i++;       // resume: skip answered
+  if(c.i>=20) return finishStage();
+  answered=false;readyAt=Date.now()+350;
+  const st=STAGES[c.stage-1],it=curItem();
+  $('#pStage').textContent=`ด่าน ${c.stage} · ${st.title}`;
+  $('#pNum').textContent=`ข้อ ${c.i+1}/20`;
+  $('#pScore').textContent=`คะแนน ${c.score}`;
+  $('#pBar').style.width=(c.i/20*100)+'%';
+  updVio();
+  $('#fb').innerHTML='';
+  $('#qType').textContent=it.t==='click'?it.p:TYPE_LABEL[it.t];
+  const body=$('#qBody');
+  if(it.t==='mc'){
+    const opts=shuffle(it.o,itemRng());
+    body.innerHTML=`<p class="sent">${fmt(it.q).replace('___','<span class="blank">&nbsp;</span>')}</p>
+      <div class="opts">${opts.map((o,k)=>`<button class="opt" data-v="${esc(o)}">${'ABCD'[k]}. ${esc(o)}</button>`).join('')}</div>`;
+    body.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{
+      if(answered||notReady())return;const ok=b.dataset.v===it.a;
+      body.querySelectorAll('.opt').forEach(x=>{x.disabled=true;if(x.dataset.v===it.a)x.classList.add('right')});
+      if(!ok)b.classList.add('wrong');answer(ok,b.dataset.v)});
+  }else if(it.t==='click'){
+    body.innerHTML=`<div class="toks sent">${it.w.map((w,k)=>`<button class="tok" data-k="${k}">${esc(w)}</button>`).join('')}</div>`;
+    body.querySelectorAll('.tok').forEach(b=>b.onclick=()=>{
+      if(answered||notReady())return;const k=+b.dataset.k,ok=k===it.a;
+      body.querySelectorAll('.tok').forEach(x=>{x.disabled=true;if(+x.dataset.k===it.a)x.classList.add('right')});
+      if(!ok)b.classList.add('wrong');answer(ok,it.w[k])});
+  }else if(it.t==='fill') renderFill(it,body);
+  else renderOrder(it,body);
+}
+
+/* pointer drag (works with mouse, touch, pen · iPad safe) */
+function dragify(el,onTap,onDrop){
+  el.addEventListener('pointerdown',e=>{
+    if(answered||e.button>0)return;e.preventDefault();
+    const sx=e.clientX,sy=e.clientY;let ghost=null,moved=false,hot=null;
+    try{el.setPointerCapture(e.pointerId)}catch(_){}
+    const zoneAt=(x,y)=>{const t=document.elementFromPoint(x,y);return t&&t.closest('[data-drop]')};
+    const mv=ev=>{
+      if(!moved&&Math.hypot(ev.clientX-sx,ev.clientY-sy)>8){moved=true;ghost=el.cloneNode(true);ghost.classList.add('drag-ghost');document.body.appendChild(ghost);el.classList.add('dragging')}
+      if(moved){ghost.style.left=ev.clientX+'px';ghost.style.top=ev.clientY+'px';const z=zoneAt(ev.clientX,ev.clientY);
+        if(z!==hot){hot&&hot.classList.remove('hot');hot=z;hot&&hot.classList.add('hot')}}};
+    const up=ev=>{el.removeEventListener('pointermove',mv);el.removeEventListener('pointerup',up);el.removeEventListener('pointercancel',up);
+      hot&&hot.classList.remove('hot');
+      if(moved){ghost.remove();el.classList.remove('dragging');const z=ev.type==='pointercancel'?null:zoneAt(ev.clientX,ev.clientY);onDrop(z,ev.clientX,ev.clientY)}
+      else if(ev.type==='pointerup')onTap()};
+    el.addEventListener('pointermove',mv);el.addEventListener('pointerup',up);el.addEventListener('pointercancel',up);
+  });
+  el.addEventListener('click',e=>{if(e.detail===0&&!answered)onTap()});   // Enter / Space จากคีย์บอร์ด
+}
+
+function renderFill(it,body){
+  const chips=shuffle(it.o,itemRng());let slot=null; // chip index in slot
+  const draw=()=>{
+    const parts=fmt(it.q).split('___');
+    body.innerHTML=`<p class="sent">${parts[0]}<span class="slot" data-drop="slot">${slot!=null?`<button class="chip" data-k="${slot}">${esc(chips[slot])}</button>`:''}</span>${parts[1]||''}</p>
+      <div class="tray zone" data-drop="tray">${chips.map((c,k)=>k===slot?'':`<button class="chip" data-k="${k}">${esc(c)}</button>`).join('')}</div>
+      <div class="hint">แตะคำเพื่อวางในช่อง · แตะคำในช่องเพื่อนำออก</div>
+      <div class="actions"><button class="btn" id="chk" ${slot==null?'disabled':''}>ตรวจคำตอบ</button></div>`;
+    body.querySelectorAll('.chip').forEach(ch=>{const k=+ch.dataset.k,inSlot=!!ch.closest('.slot');
+      dragify(ch,()=>{slot=inSlot?null:k;draw()},(z)=>{if(!z)return;if(z.dataset.drop==='slot')slot=k;else if(inSlot)slot=null;draw()})});
+    $('#chk').onclick=()=>{if(answered||slot==null)return;const g=chips[slot],ok=g===it.a;
+      const s=body.querySelector('.slot .chip');s.classList.add(ok?'right':'wrong');body.querySelectorAll('.chip').forEach(x=>x.disabled=true);
+      $('#chk').remove();answer(ok,g)};
+  };draw();
+}
+
+function renderOrder(it,body){
+  const r=itemRng();let ids=it.w.map((_,k)=>k),tray=shuffle(ids,r);
+  if(tray.every((v,k)=>v===k)) tray.push(tray.shift());
+  let line=[];
+  const insertAt=(x,y)=>{const chs=[...body.querySelectorAll('.line .chip:not(.dragging)')];
+    for(const c of chs){const b=c.getBoundingClientRect();if(y<b.top-4)return +c.dataset.pos;if(y<=b.bottom+4&&x<b.left+b.width/2)return +c.dataset.pos}
+    return null};
+  const draw=()=>{
+    body.innerHTML=`<div class="zone line" data-drop="line" style="min-height:70px">${line.length?line.map((id,p)=>`<button class="chip" data-id="${id}" data-pos="${p}">${esc(it.w[id])}</button>`).join(''):'<span class="muted small">วางคำที่นี่ตามลำดับ</span>'}</div>
+      <div class="tray zone" data-drop="tray">${tray.map(id=>`<button class="chip" data-id="${id}">${esc(it.w[id])}</button>`).join('')}</div>
+      <div class="hint">แตะคำด้านล่างเพื่อต่อประโยค · แตะคำในประโยคเพื่อนำออก · ลากเพื่อสลับตำแหน่ง</div>
+      <div class="actions"><button class="btn" id="chk" ${tray.length?'disabled':''}>ตรวจคำตอบ</button><button class="btn ghost" id="clr">ล้างทั้งหมด</button></div>`;
+    body.querySelectorAll('.chip').forEach(ch=>{const id=+ch.dataset.id,inLine=!!ch.closest('.line');
+      dragify(ch,()=>{if(inLine){line=line.filter(v=>v!==id);tray.push(id)}else{tray=tray.filter(v=>v!==id);line.push(id)}draw()},
+        (z,x,y)=>{if(!z)return;
+          if(z.dataset.drop==='line'){let pos=insertAt(x,y);line=line.filter(v=>v!==id);tray=tray.filter(v=>v!==id);
+            if(pos==null||pos>line.length)line.push(id);else{ if(inLine){const old=+ch.dataset.pos;if(old<pos)pos--;} line.splice(pos,0,id)}}
+          else if(z.dataset.drop==='tray'&&inLine){line=line.filter(v=>v!==id);tray.push(id)}
+          draw()})});
+    $('#clr').onclick=()=>{if(answered)return;tray=tray.concat(line);line=[];draw()};
+    $('#chk').onclick=()=>{if(answered||tray.length)return;const g=line.map(id=>it.w[id]).join(' '),ok=g===it.w.join(' ');
+      body.querySelector('.line').classList.add(ok?'right':'wrong');body.querySelectorAll('.chip,#clr').forEach(x=>x.disabled=true);
+      $('#chk').remove();answer(ok,g)};
+  };draw();
+}
+
+function answer(ok,given){
+  if(answered)return;answered=true;
+  const c=S.cur,it=curItem();
+  c.res[c.i]={ok,g:given};if(ok)c.score++;save();beep(ok);
+  $('#pScore').textContent=`คะแนน ${c.score}`;
+  const last=c.i===19;
+  $('#fb').innerHTML=`<div class="fb"><div class="pm ${ok?'ok':'no'}">${ok?'DELIVERED<br>✔':'RETURN TO<br>SENDER'}</div>
+    <div><div class="ans">${ok?'ถูกต้อง!':'ยังไม่ถูก คำตอบที่ถูกคือ'}</div>${ok?'':`<div style="font-size:20px;color:var(--green);font-weight:700">${esc(correctText(it))}</div>`}
+    <div class="muted" style="margin-top:4px">${esc(it.ex)}</div></div>
+    <button class="btn next" id="nextBtn">${last?'ดูผลด่านนี้':'ข้อต่อไป'}</button></div>`;
+  $('#nextBtn').onclick=next;$('#nextBtn').focus({preventScroll:true});
+  $('#fb').scrollIntoView({behavior:'smooth',block:'nearest'});
+  api('progress',{key:S.key,live:`ด่าน ${c.stage} ข้อ ${c.i+1}/20 (${c.score} คะแนน)`});
+}
+function next(){if(!S.cur||!answered)return;answered=false;S.cur.i++;save();if(S.cur.i>=20)finishStage();else renderQ()}
+
+function finishStage(){
+  const c=S.cur,n=c.stage,st=STAGES[n-1];
+  const wrong=[];c.order.forEach((idx,p)=>{const r=c.res[p];if(r&&!r.ok)wrong.push({idx,g:r.g})});
+  S.done[n]=c.score;S.wrong[n]=wrong;S.cur=null;
+  S.outbox.push({action:'stage',key:S.key,info:S.info,stage:n,score:c.score,wrong:wrong.map(w=>(w.idx+1)).join(',')});
+  save();flush();
+  $('#seTitle').textContent=`ด่าน ${n} · ${st.title}`;$('#seScore').textContent=c.score;
+  $('#seMsg').textContent=c.score>=18?'ยอดเยี่ยม! ส่งพัสดุครบเกือบทุกชิ้น':c.score>=14?'ดีมาก ทบทวนข้อที่ผิดอีกนิด':c.score>=10?'ผ่านครึ่งทาง ลองอ่านคำอธิบายข้อที่ผิด':'ทบทวนกฎของด่านนี้อีกครั้งนะ';
+  $('#seReview').innerHTML=wrong.length?wrong.map(w=>{const it=st.items[w.idx];
+    return `<div><div>${it.t==='click'?esc(it.w.join(' ')):it.t==='order'?'เรียงประโยค':fmt(it.q)}</div>
+      <div><span style="color:var(--red)">ตอบ: ${esc(w.g)}</span> · <b style="color:var(--green)">เฉลย: ${esc(correctText(it))}</b></div>
+      <div class="muted small">${esc(it.ex)}</div></div>`}).join(''):'<div>ไม่มีข้อผิดเลย 🎉</div>';
+  show('stageEnd');
+}
+
+/* ---------------- final ---------------- */
+function renderFinal(){
+  $('#fName').textContent=S.info.first+' '+S.info.last;
+  $('#fClass').textContent=`ชั้น ${S.info.grade}/${S.info.room} เลขที่ ${S.info.no}`;
+  $('#fTotal').textContent=totalScore();
+  $('#fBars').innerHTML=STAGES.map(st=>{const d=S.done[st.n]||0;
+    return `<div class="brow"><span>ด่าน ${st.n} ${st.title}</span><span class="btrack"><i style="width:${d/20*100}%;background:${st.color}"></i></span><b>${d}/20</b></div>`}).join('');
+  $('#fSync').textContent=!GAS_URL?'โหมดออฟไลน์: แคปหน้าจอนี้ส่งครู':S.outbox.length?'กำลังรอส่งคะแนนให้ครู... (เปิดหน้านี้ค้างไว้เมื่อมีอินเทอร์เน็ต)':'ส่งคะแนนถึงครูเรียบร้อยแล้ว ✔';
+  show('final');
+}
+
+/* ---------------- anti-cheat ---------------- */
+function updVio(){const v=$('#pVio');if(S&&S.viol){v.hidden=false;v.textContent=`สลับแท็บ ${S.viol}`}else v.hidden=true}
+function violation(kind){
+  if(!S||!S.cur)return;S.viol++;save();updVio();
+  toast(kind==='translate'?'ตรวจพบการแปลหน้า ระบบบันทึกแล้ว':'ตรวจพบการออกจากหน้าข้อสอบ ระบบบันทึกให้ครูแล้ว',true);
+  api('violation',{key:S.key,count:S.viol,kind});
+}
+document.addEventListener('visibilitychange',()=>{if(document.hidden&&!$('#play').hidden)violation('tab')});
+['copy','cut','contextmenu'].forEach(ev=>document.addEventListener(ev,e=>{if(!$('#play').hidden)e.preventDefault()}));
+let lastTr=0;
+new MutationObserver(ms=>{if($('#play').hidden)return;if(ms.some(m=>m.type==='characterData')&&Date.now()-lastTr>5000){lastTr=Date.now();violation('translate')}})
+  .observe(document.getElementById('play'),{subtree:true,characterData:true});
+
+/* ---------------- admin ---------------- */
+let ADMIN_PIN='',rows=[],prevUpd={},pollT=null;
+async function tryPin(){
+  const pin=$('#pinIn').value.trim();if(!pin)return;
+  $('#pinBtn').disabled=true;
+  let ok=false;
+  let netErr=false;
+  if(GAS_URL){const r=await api('checkPin',{pin});ok=!!r.ok;netErr=!r.ok&&r.error&&r.error!=='bad pin'}else ok=pin===DEFAULT_PIN;
+  $('#pinBtn').disabled=false;
+  if(!ok) return $('#pinErr').textContent=netErr?'เชื่อมต่อระบบไม่ได้ ตรวจสอบ GAS_URL / อินเทอร์เน็ต':'PIN ไม่ถูกต้อง';
+  ADMIN_PIN=pin;show('admin');
+  if(!GAS_URL){$('#adNote').textContent='ยังไม่ได้ใส่ GAS_URL ในไฟล์ index.html จึงยังไม่มีคะแนนนักเรียนแสดง (ดูวิธีติดตั้งใน Code.gs)';$('#adSync').className='sync off';$('#adSync').textContent='● ไม่ได้เชื่อมต่อ'}
+  poll();pollT=setInterval(poll,2000);
+}
+let polling=false,prevViol={},firstPoll=true;
+async function poll(){
+  if(!GAS_URL){renderAdmin();return}
+  if(polling)return;polling=true;               // กันคำขอซ้อนเมื่อ GAS ตอบช้า
+  let r;try{r=await api('list',{pin:ADMIN_PIN})}finally{polling=false}
+  const s=$('#adSync');
+  if(!r.ok){s.className='sync off';s.textContent=r.error==='bad pin'?'● PIN ถูกเปลี่ยน':'● เชื่อมต่อไม่ได้';return}
+  s.className='sync on';s.textContent='● สด';
+  rows=r.rows||[];
+  // แจ้งเตือนเมื่อมีนักเรียนสลับแท็บเพิ่ม
+  const alerts=rows.filter(x=>!firstPoll&&(+x.violations||0)>(prevViol[x.key]||0));
+  if(alerts.length){beep(false);toast('⚠ '+alerts.map(x=>`${x.first} (${x.grade}/${x.room} เลขที่ ${x.no})`).join(', ')+' ออกจากหน้าข้อสอบ',true)}
+  prevViol={};rows.forEach(x=>prevViol[x.key]=+x.violations||0);firstPoll=false;
+  renderAdmin();
+}
+const has=v=>v!==''&&v!=null;
+function renderAdmin(){
+  const q=$('#adSearch').value.trim().toLowerCase(),g=$('#adGrade').value,rm=$('#adRoom').value,sort=$('#adSort').value;
+  let list=rows.filter(x=>(!g||x.grade===g)&&(!rm||String(x.room)===rm)&&(!q||(x.first+' '+x.last+' '+x.no).toLowerCase().includes(q)));
+  list.sort(sort==='score'?(a,b)=>(+b.total||0)-(+a.total||0):sort==='time'?(a,b)=>String(b.updated).localeCompare(String(a.updated)):
+    (a,b)=>String(a.grade).localeCompare(String(b.grade))||(+a.room-+b.room)||(+a.no-+b.no));
+  const done=list.filter(x=>[1,2,3,4,5].every(n=>has(x['s'+n])));
+  const avg=done.length?(done.reduce((a,x)=>a+(+x.total||0),0)/done.length).toFixed(1):'-';
+  const stAvg=n=>{const v=list.filter(x=>has(x['s'+n])).map(x=>+x['s'+n]);return v.length?(v.reduce((a,b)=>a+b,0)/v.length).toFixed(1):'-'};
+  $('#adStats').innerHTML=`<div class="stat"><b>${list.length}</b>ลงทะเบียน${list.length!==rows.length?' (ตามตัวกรอง)':''}</div><div class="stat"><b>${done.length}</b>ครบ 5 ด่าน</div>
+    <div class="stat"><b>${avg}</b>เฉลี่ย /100 (ครบ 5 ด่าน)</div><div class="stat"><b class="vio">${list.filter(x=>+x.violations>0).length}</b>มีการสลับแท็บ</div>
+    ${STAGES.map(st=>`<div class="stat"><b style="color:${st.color}">${stAvg(st.n)}</b>เฉลี่ยด่าน ${st.n} /20<br><span class="small muted">${st.title}</span></div>`).join('')}`;
+  $('#adBody').innerHTML=list.length?list.map(x=>{const fl=prevUpd[x.key]&&prevUpd[x.key]!==x.updated;
+    return `<tr class="${fl?'flash':''}"><td>${esc(x.grade)}/${esc(x.room)}</td><td class="n">${esc(x.no)}</td><td>${esc(x.first+' '+x.last)}</td>
+    ${[1,2,3,4,5].map(n=>`<td class="n">${has(x['s'+n])?`<button class="cell" data-key="${esc(x.key)}" data-n="${n}" title="แตะเพื่อให้ทำด่านนี้ใหม่">${esc(x['s'+n])}</button>`:'–'}</td>`).join('')}
+    <td class="n"><b>${esc(x.total||0)}</b></td><td>${esc(x.live||'')}</td><td class="n ${+x.violations?'vio':''}">${esc(x.violations||0)}</td>
+    <td class="small">${esc(x.updated||'')}</td><td><button class="mini" data-key="${esc(x.key)}">รีเซ็ตทั้งหมด</button></td></tr>`}).join('')
+    :`<tr><td colspan="13" class="muted" style="text-align:center;padding:24px">${rows.length?'ไม่พบนักเรียนตามตัวกรอง':'ยังไม่มีนักเรียนลงทะเบียน · ส่งลิงก์ให้นักเรียนด้วยปุ่ม "คัดลอกลิงก์นักเรียน"'}</td></tr>`;
+  prevUpd={};rows.forEach(x=>prevUpd[x.key]=x.updated);
+  document.querySelectorAll('#adBody .mini').forEach(b=>b.onclick=async()=>{
+    const x=rows.find(r=>r.key===b.dataset.key);if(!x)return;
+    if(!confirm(`รีเซ็ตคะแนนทั้งหมดของ ${x.first} ${x.last}?\nนักเรียนจะทำใหม่ได้ทุกด่าน`))return;
+    const r=await api('delete',{pin:ADMIN_PIN,key:b.dataset.key});toast(r.ok?'รีเซ็ตแล้ว':'รีเซ็ตไม่สำเร็จ: '+(r.error||'เชื่อมต่อไม่ได้'),!r.ok);poll()});
+  document.querySelectorAll('#adBody .cell').forEach(b=>b.onclick=async()=>{
+    const x=rows.find(r=>r.key===b.dataset.key),n=b.dataset.n;if(!x)return;
+    if(!confirm(`ให้ ${x.first} ${x.last} ทำด่าน ${n} ใหม่?\n(คะแนนเดิม ${x['s'+n]}/20 จะถูกลบ)`))return;
+    const r=await api('resetStage',{pin:ADMIN_PIN,key:x.key,stage:n});toast(r.ok?`ปลดล็อกด่าน ${n} แล้ว`:'ไม่สำเร็จ: '+(r.error||'เชื่อมต่อไม่ได้'),!r.ok);poll()});
+}
+function csv(){
+  const head=['ชั้น','ห้อง','เลขที่','ชื่อ','นามสกุล','ด่าน1','ด่าน2','ด่าน3','ด่าน4','ด่าน5','รวม','สลับแท็บ','อัปเดต'];
+  const lines=[head].concat(rows.map(x=>[x.grade,x.room,x.no,x.first,x.last,x.s1,x.s2,x.s3,x.s4,x.s5,x.total,x.violations,x.updated]));
+  const txt='\uFEFF'+lines.map(l=>l.map(v=>'"'+String(v??'').replace(/"/g,'""')+'"').join(',')).join('\r\n');
+  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([txt],{type:'text/csv'}));a.download='pronoun-post-scores.csv';a.click();
+}
+
+/* ---------------- boot ---------------- */
+function boot(){
+  const isAdmin=new URLSearchParams(location.search).get('admin')==='1';
+  if(isAdmin){
+    document.body.classList.add('admin');show('gate');
+    $('#pinBtn').onclick=tryPin;$('#pinIn').onkeydown=e=>{if(e.key==='Enter')tryPin()};
+    ['#adSearch','#adGrade','#adRoom','#adSort'].forEach(s=>$(s).oninput=renderAdmin);
+    $('#adCsv').onclick=csv;
+    $('#adOut').onclick=()=>{clearInterval(pollT);ADMIN_PIN='';location.href=location.pathname};
+    $('#adCopy').onclick=()=>{const u=location.href.split('?')[0];(navigator.clipboard?navigator.clipboard.writeText(u):Promise.reject()).then(()=>toast('คัดลอกลิงก์แล้ว'),()=>prompt('คัดลอกลิงก์นี้',u))};
+    $('#setPin').onclick=async()=>{const np=$('#newPin').value.trim();if(!/^\d{4,8}$/.test(np))return toast('PIN ต้องเป็นตัวเลข 4–8 หลัก',true);
+      const r=await api('setPin',{pin:ADMIN_PIN,newPin:np});if(r.ok){ADMIN_PIN=np;$('#newPin').value='';toast('เปลี่ยน PIN แล้ว')}else toast('เปลี่ยนไม่สำเร็จ'+(GAS_URL?'':' (ต้องเชื่อมต่อ GAS ก่อน)'),true)};
+    return;
+  }
+  $('#regBtn').onclick=register;
+  $('#fNo').onkeydown=e=>{if(e.key==='Enter')register()};
+  $('#ruleBack').onclick=()=>{renderHub();show('hub')};
+  $('#seBack').onclick=()=>{renderHub();show('hub')};
+  $('#toFinal').onclick=renderFinal;
+  $('#fBack').onclick=()=>{renderHub();show('hub')};
+  $('#notMe').onclick=()=>{if(S.cur)return toast('กรุณาทำด่านที่ค้างอยู่ให้จบก่อน',true);
+    if(S.outbox.length)return toast('ยังมีคะแนนรอส่งให้ครู กรุณาเชื่อมต่ออินเทอร์เน็ตก่อน',true);
+    if(!confirm('ออกจากระบบ? ข้อมูลในเครื่องนี้จะถูกล้าง'))return;localStorage.removeItem(LS_KEY);S=null;
+    ['#fFirst','#fLast','#fNo'].forEach(s=>$(s).value='');show('reg')};
+  window.addEventListener('online',()=>{if(S)flush()});
+  S=load();
+  if(S&&S.key&&S.info){
+    S.done=S.done||{};S.wrong=S.wrong||{};S.outbox=S.outbox||[];S.viol=S.viol||0;
+    if(S.cur){show('play');renderQ()}else{renderHub();show('hub')}
+    syncRegister();
+  }else show('reg');
+}
+boot();
+</script>
+</body>
+</html>
